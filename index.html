@@ -431,6 +431,12 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
       <input class="sr" type="radio" name="mode" id="m-voronoi" value="voronoi"><label for="m-voronoi"><canvas class="th" width="272" height="272" data-mode="voronoi" aria-hidden="true"></canvas>Voronoi</label>
       <input class="sr" type="radio" name="mode" id="m-subdiv" value="subdiv"><label for="m-subdiv"><canvas class="th" width="272" height="272" data-mode="subdiv" aria-hidden="true"></canvas>Subdiv</label>
       <input class="sr" type="radio" name="mode" id="m-truchet" value="truchet"><label for="m-truchet"><canvas class="th" width="272" height="272" data-mode="truchet" aria-hidden="true"></canvas>Truchet</label>
+      <input class="sr" type="radio" name="mode" id="m-veil" value="veil"><label for="m-veil"><canvas class="th" width="272" height="272" data-mode="veil" aria-hidden="true"></canvas>Veil</label>
+      <input class="sr" type="radio" name="mode" id="m-wavenet" value="wavenet"><label for="m-wavenet"><canvas class="th" width="272" height="272" data-mode="wavenet" aria-hidden="true"></canvas>Wave net</label>
+      <input class="sr" type="radio" name="mode" id="m-tris" value="tris"><label for="m-tris"><canvas class="th" width="272" height="272" data-mode="tris" aria-hidden="true"></canvas>Triangles</label>
+      <input class="sr" type="radio" name="mode" id="m-checker" value="checker"><label for="m-checker"><canvas class="th" width="272" height="272" data-mode="checker" aria-hidden="true"></canvas>Checker</label>
+      <input class="sr" type="radio" name="mode" id="m-opposing" value="opposing"><label for="m-opposing"><canvas class="th" width="272" height="272" data-mode="opposing" aria-hidden="true"></canvas>Opposing</label>
+      <input class="sr" type="radio" name="mode" id="m-squares" value="squares"><label for="m-squares"><canvas class="th" width="272" height="272" data-mode="squares" aria-hidden="true"></canvas>Squares</label>
       <input class="sr" type="radio" name="mode" id="m-hatch" value="hatch"><label for="m-hatch"><canvas class="th" width="272" height="272" data-mode="hatch" aria-hidden="true"></canvas>Hatch</label>
       <input class="sr" type="radio" name="mode" id="m-technical" value="technical"><label for="m-technical"><canvas class="th" width="272" height="272" data-mode="technical" aria-hidden="true"></canvas>Technical</label>
       <input class="sr" type="radio" name="mode" id="m-duotone" value="duotone"><label for="m-duotone"><canvas class="th" width="272" height="272" data-mode="duotone" aria-hidden="true"></canvas>Duotone</label>
@@ -675,7 +681,7 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
   if (!["flow", "rigid", "facets"].includes(S.engHatch)) S.engHatch = "flow";
   if (!["profile", "lines"].includes(S.snowLook)) S.snowLook = "profile";
   if (!["none", "outline", "contours"].includes(S.engLines)) S.engLines = "outline";
-  if (!["wave","spiral","contour","flow","blobs","hatch","technical","duotone","engrave","etch","loop","snow","dots","hairs","arrows","suns","swirls","ascii","growth","voronoi","subdiv","ridges","truchet"].includes(S.mode)) S.mode = "wave";
+  if (!["wave","spiral","contour","flow","blobs","hatch","technical","duotone","engrave","etch","loop","snow","dots","hairs","arrows","suns","swirls","ascii","growth","voronoi","subdiv","ridges","truchet","veil","wavenet","tris","checker","opposing","squares"].includes(S.mode)) S.mode = "wave";
   if (!SHAPES[S.shape]) S.shape = DEFAULTS.shape;
   if (!["none", "hatch", "cross", "grid", "iso", "zig", "stipple"].includes(S.cellFill)) S.cellFill = "none";
   if (!["off", "light", "dark", "flat", "radial"].includes(S.cull)) S.cull = "off";
@@ -686,8 +692,8 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
   const scaleOf = (size) => { const [a, b] = SIZES[size]; return Math.sqrt(a * b / (210 * 297)); };
   const store = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
 
-  const SPACE_NAMES = { wave: "Line spacing", spiral: "Ring spacing", flow: "Line spacing", blobs: "Fill spacing", hatch: "Hatch spacing", technical: "Hatch spacing", duotone: "Screen spacing", engrave: "Line spacing", etch: "Stroke spacing", loop: "Line spacing", snow: "Ice line spacing", dots: "Dot spacing", hairs: "Grid spacing", arrows: "Grid spacing", suns: "Grid spacing", swirls: "Grid spacing", ascii: "Character size", growth: "Cell size", voronoi: "Cell size", subdiv: "Mesh spacing", ridges: "Row spacing", truchet: "Line spacing" };
-  const AMP_NAMES = { wave: "Wave height", spiral: "Wave height", flow: "Line length", blobs: "Blob amount", technical: "Shading", duotone: "Wave height", engrave: "Shading", etch: "Shading", loop: "Tone range", snow: "Branching", dots: "Dot size", hairs: "Hair length", arrows: "Arrow length", suns: "Sun size", swirls: "Swirl size", ascii: "Glyph size", growth: "Growth", voronoi: "Cell gap", subdiv: "Warp", ridges: "Relief height", truchet: "Line density" };
+  const SPACE_NAMES = { wave: "Line spacing", spiral: "Ring spacing", flow: "Line spacing", blobs: "Fill spacing", hatch: "Hatch spacing", technical: "Hatch spacing", duotone: "Screen spacing", engrave: "Line spacing", etch: "Stroke spacing", loop: "Line spacing", snow: "Ice line spacing", dots: "Dot spacing", hairs: "Grid spacing", arrows: "Grid spacing", suns: "Grid spacing", swirls: "Grid spacing", ascii: "Character size", growth: "Cell size", voronoi: "Cell size", subdiv: "Mesh spacing", ridges: "Row spacing", truchet: "Line spacing", veil: "Line spacing", wavenet: "Line spacing", tris: "Triangle size", checker: "Square size", opposing: "Bar spacing", squares: "Square size" };
+  const AMP_NAMES = { wave: "Wave height", spiral: "Wave height", flow: "Line length", blobs: "Blob amount", technical: "Shading", duotone: "Wave height", engrave: "Shading", etch: "Shading", loop: "Tone range", snow: "Branching", dots: "Dot size", hairs: "Hair length", arrows: "Arrow length", suns: "Sun size", swirls: "Swirl size", ascii: "Glyph size", growth: "Growth", voronoi: "Cell gap", subdiv: "Warp", ridges: "Relief height", truchet: "Line density", veil: "Bunching", wavenet: "Wave height", tris: "Fill amount", checker: "Skew", opposing: "Bar length", squares: "Fill amount" };
   const SLIDERS = [
     { id: "spacing", min: 0.5, max: 10, step: 0.1, dp: 1, unit: " mm", name: () => SPACE_NAMES[S.mode], modes: Object.keys(SPACE_NAMES) },
     { id: "amp", min: 0, max: 200, step: 5, dp: 0, unit: "%", name: () => AMP_NAMES[S.mode], modes: Object.keys(AMP_NAMES) },
@@ -705,7 +711,7 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
     { id: "camAlpha", parent: "camSliders", min: 5, max: 80, step: 5, dp: 0, unit: "%", name: () => "Camera opacity", when: () => S.camUnder, view: true },
     { id: "pen", min: 0.1, max: 1, step: 0.05, dp: 2, unit: " mm", name: () => "Pen width" },
     { id: "jitLine", min: 0, max: 100, step: 1, dp: 0, unit: "%", name: () => "Line wobble" },
-    { id: "jitHatch", min: 0, max: 100, step: 1, dp: 0, unit: "%", name: () => "Hatch wobble", modes: ["hatch", "blobs", "technical", "voronoi", "subdiv", "engrave", "etch"], when: () => !(S.mode === "voronoi" || S.mode === "subdiv") || S.cellFill !== "none" },
+    { id: "jitHatch", min: 0, max: 100, step: 1, dp: 0, unit: "%", name: () => "Hatch wobble", modes: ["hatch", "blobs", "technical", "voronoi", "subdiv", "engrave", "etch", "tris", "checker", "squares"], when: () => !(S.mode === "voronoi" || S.mode === "subdiv") || S.cellFill !== "none" },
     { id: "cullAt", parent: "cullSliders", min: 0, max: 100, step: 1, dp: 0, unit: "%", name: () => CULL_NAMES[S.cull] || "Cutoff", when: () => S.cull !== "off" },
     { id: "cullX", parent: "cullSliders", min: 0, max: 100, step: 1, dp: 0, unit: "%", name: () => "Centre across", when: () => S.cull === "radial" },
     { id: "cullY", parent: "cullSliders", min: 0, max: 100, step: 1, dp: 0, unit: "%", name: () => "Centre down", when: () => S.cull === "radial" },
@@ -865,7 +871,9 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
     hatch: ["Vanishing point", "Vanishing point"], technical: ["Vanishing point", "Vanishing point"], duotone: ["Pinch", "Bulge"], engrave: ["Converge", "Radiate"], etch: ["Converge", "Radiate"], loop: ["Tighter here", "Looser here"], snow: ["Flake centre", "Flake centre"], dots: ["Ring grid", "Ring grid"],
     hairs: ["Magnet", "Circle comb"], arrows: ["Aim here", "Aim away"], suns: ["Rays reach", "Rays recoil"],
     swirls: ["Orbit", "Counter-orbit"], ascii: ["Ring grid", "Ring grid"], growth: ["Growth seed", "Growth seed"],
-    voronoi: ["Cells shrink", "Cells grow"], subdiv: ["Pinch", "Bulge"], ridges: ["Hill", "Pit"], truchet: ["Finer here", "Coarser here"]
+    voronoi: ["Cells shrink", "Cells grow"], subdiv: ["Pinch", "Bulge"], ridges: ["Hill", "Pit"], truchet: ["Finer here", "Coarser here"],
+    veil: ["Bunch here", "Part here"], wavenet: ["Split here", "Merge here"], tris: ["Triangles grow", "Triangles shrink"],
+    checker: ["Pinch", "Bulge"], opposing: ["Bars lengthen", "Bars shorten"], squares: ["Squares gather", "Clearing"]
   };
   const FOCUS_DESC = {
     wave: ["Lines pinch in towards the point", "Lines bulge away from the point"], spiral: ["The spiral starts at the point"],
@@ -877,7 +885,10 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
     suns: ["Rays stretch towards the point", "Rays stretch away from the point"], swirls: ["Swirls orbit the point", "Swirls orbit the other way"],
     ascii: ["Characters sit on rings around the point"], growth: ["The pattern grows out from the point; Pull sets how far"],
     voronoi: ["Cells get smaller towards the point", "Cells get bigger towards the point"], subdiv: ["The mesh pinches in towards the point", "The mesh bulges away from the point"], ridges: ["A hill rises at the point", "A pit sinks at the point"],
-    truchet: ["Tiles get smaller around the point", "Tiles get bigger around the point"]
+    truchet: ["Tiles get smaller around the point", "Tiles get bigger around the point"],
+    veil: ["Lines bunch up around the point", "Lines part around the point"], wavenet: ["Lines split apart around the point", "Lines merge around the point"],
+    tris: ["Triangles grow around the point", "Triangles shrink around the point"], checker: ["The board pinches in towards the point", "The board bulges away from the point"],
+    opposing: ["Bars lengthen around the point", "Bars shorten around the point"], squares: ["Squares grow around the point", "Squares dissolve into a clearing at the point"]
   };
   const focusDesc = () => { const d = FOCUS_DESC[S.mode] || ["The style reacts to the point"]; return d[S.repel && d[1] ? 1 : 0]; };
   const focusName = () => (FOCUS_NAMES[S.mode] || ["Focal point"])[S.repel ? 1 : 0] || "Focal point";
@@ -2295,6 +2306,157 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
     return out;
   }
 
+  // ---------------- pattern styles: lines and hatched shapes whose density follows tone ----------------
+  // Hatch step inside a filled shape: tighter in the dark.
+  const toneStep = (dk) => clamp(S.spacing * 0.5 * (1.8 - 1.4 * dk), S.pen * 1.4, 40);
+  // A polygon's outline as one closed stroke.
+  const ring = (X, Y) => { const p = []; for (let i = 0; i <= X.length; i++) p.push(X[i % X.length], Y[i % X.length]); return p; };
+  // Darkness with the focal point added in (attract) or taken away (repel).
+  const focusDk = (f, x, y, w) => { const dk = D(x, y); return f ? clamp(dk + f.s * f.k * w * fall(f, x, y), 0, 1) : dk; };
+  const allIn = (d, X, Y) => X.every((x, i) => inside(d, x, Y[i]));
+
+  // veil: full-height vertical lines that bunch together in the dark, like a sheer curtain
+  function genVeil(d) {
+    const s = S.spacing * 0.7, amp = S.amp / 100, f = focus(d), out = [], B = blobField(); // well blurred so lines bend smoothly
+    const N = Math.max(4, Math.round(d.dw / s)), K = Math.max(160, N * 4), rows = Math.max(2, Math.ceil(d.dh / Math.max(0.5, s * 0.6)));
+    const lines = Array.from({ length: N }, () => []), cum = new Float32Array(K + 1);
+    for (let r = 0; r <= rows; r++) {
+      const y = d.my + r / rows * d.dh;
+      for (let k = 0; k < K; k++) {
+        const x = d.mx + (k + 0.5) / K * d.dw;
+        let w = sampleArr(B, x, y);
+        if (f) w *= f.s > 0 ? 1 + 2 * f.k * fall(f, x, y) : 1 - 0.9 * f.k * fall(f, x, y);
+        cum[k + 1] = cum[k] + 0.25 + amp * 1.5 * w; // each line takes an equal share of the darkness
+      }
+      for (let i = 0, k = 0; i < N; i++) {
+        const T = (i + 0.5) / N * cum[K];
+        while (k < K - 1 && cum[k + 1] < T) k++;
+        const fr = (T - cum[k]) / (cum[k + 1] - cum[k] || 1);
+        lines[i].push(d.mx + (k + fr) / K * d.dw, y);
+      }
+    }
+    lines.forEach((p, i) => out.push({ layer: 0, pts: i % 2 ? rev(p) : p }));
+    return out;
+  }
+
+  // wave network: wavy rows that merge in pairs in the light and split apart in the dark;
+  // which neighbours pair up drifts across the sheet, so the merges weave into a net
+  function genWaveNet(d) {
+    const s = S.spacing, amp = S.amp / 100, f = focus(d), out = [], B = fields().B;
+    const n = Math.max(2, Math.floor(d.dh / s)), sp = d.dh / n, step = Math.max(0.3, s * 0.15), A = sp * 1.5 * amp;
+    const dkAt = (x, y) => { const v = sampleArr(B, x, y); return f ? clamp(v + f.s * f.k * 0.7 * fall(f, x, y), 0, 1) : v; };
+    const merge = (x, y) => clamp((1 - dkAt(x, y)) * 1.4 - 0.2, 0, 1);
+    const pairA = (x, y) => clamp(0.5 + Math.sin(x * 0.5 / s + Math.sin(y * 0.08 / s) * 2) * 3, 0, 1); // mostly 0 or 1
+    const yOf = (j, x) => {
+      const yb = d.my + (j + 0.5) * sp, sA = j % 2 ? -1 : 1, m = pairA(x, yb);
+      const okA = j + sA >= 0 && j + sA < n, okB = j - sA >= 0 && j - sA < n;
+      const cA = okA ? merge(x, d.my + ((j >> 1) * 2 + 1) * sp) * m : 0, cB = okB ? merge(x, d.my + (((j + 1) >> 1) * 2) * sp) * (1 - m) : 0;
+      const y = yb + sp / 2 * sA * (cA - cB); // the wave is added after merging, so merged partners share it exactly
+      return clamp(y + Math.sin(x * 0.35 / s + y * 0.12 / sp) * A * 0.5, d.my, d.my + d.dh);
+    };
+    for (let j = 0; j < n; j++) {
+      const segs = [], sA = j % 2 ? -1 : 1; let cur = [];
+      for (let x = d.mx; x <= d.mx + d.dw + 1e-6; x += step) {
+        const y = yOf(j, x), p = pairA(x, d.my + (j + 0.5) * sp) > 0.5 ? j + sA : j - sA;
+        if (p >= 0 && p < j && Math.abs(y - yOf(p, x)) < S.pen * 0.7) { if (cur.length >= 4) segs.push(cur); cur = []; continue; } // merged into its partner: draw once
+        cur.push(x, y);
+      }
+      if (cur.length >= 4) segs.push(cur);
+      if (j % 2) segs.reverse();
+      segs.forEach((p) => out.push({ layer: 0, pts: j % 2 ? rev(p) : p }));
+    }
+    return out;
+  }
+
+  // triangle grid: up and down triangles sized by tone, hatched along one edge
+  function genTris(d) {
+    const a = S.spacing * 2.5, h = a * Math.sqrt(3) / 2, amp = S.amp / 100, f = focus(d), out = [];
+    const rows = Math.ceil(d.dh / h), cols = Math.ceil(d.dw / (a / 2)) + 1, D2R = Math.PI / 180;
+    for (let r = 0; r < rows; r++) {
+      const yt = d.my + r * h, yb = yt + h;
+      for (let q = 0; q < cols; q++) {
+        const k = r % 2 ? cols - 1 - q : q, x0 = d.mx + (k - 1) * a / 2, up = (k + r) % 2 === 0;
+        const X = [x0, x0 + a, x0 + a / 2], Y = up ? [yb, yb, yt] : [yt, yt, yb];
+        const cx = x0 + a / 2, cy = up ? yb - h / 3 : yt + h / 3, dk = focusDk(f, cx, cy, 0.6);
+        const sc = Math.min(0.92, Math.sqrt(dk) * amp * 0.95);
+        if (sc * a < S.pen * 4) continue;
+        const px = X.map((x) => cx + (x - cx) * sc), py = Y.map((y) => cy + (y - cy) * sc);
+        if (!allIn(d, px, py)) continue;
+        out.push({ layer: 0, pts: ring(px, py) });
+        if (dk > 0.15) scanFill(px, py, (up ? 60 : 120) * D2R, toneStep(dk), 1, out, q % 2);
+      }
+    }
+    return out;
+  }
+
+  // skewed checkerboard: grid corners pushed along the picture's edges; the two colours of the
+  // board are hatched in opposite directions on pens 1 and 2, the light squares only where it's dark
+  function genChecker(d) {
+    const c = S.spacing * 3, amp = S.amp / 100, f = focus(d), out = [], D2R = Math.PI / 180;
+    const cols = Math.max(1, Math.round(d.dw / c)), rows = Math.max(1, Math.round(d.dh / c)), cw = d.dw / cols, ch = d.dh / rows;
+    const VX = [], VY = [], lim = 0.38 * Math.min(cw, ch);
+    for (let j = 0; j <= rows; j++) for (let i = 0; i <= cols; i++) {
+      let x = d.mx + i * cw, y = d.my + j * ch;
+      if (i > 0 && i < cols && j > 0 && j < rows) {
+        const [gx, gy] = grad(x, y);
+        let ox = gx * c * c * 1.5 * amp, oy = gy * c * c * 1.5 * amp; const l = Math.hypot(ox, oy);
+        if (l > lim) { ox *= lim / l; oy *= lim / l; }
+        x += ox; y += oy;
+        if (f) [x, y] = pull(f, x, y, c * 2);
+      }
+      VX.push(x); VY.push(y);
+    }
+    const v = (i, j) => j * (cols + 1) + i;
+    for (let j = 0; j < rows; j++) for (let q = 0; q < cols; q++) {
+      const i = j % 2 ? cols - 1 - q : q, ids = [v(i, j), v(i + 1, j), v(i + 1, j + 1), v(i, j + 1)];
+      const X = ids.map((k) => VX[k]), Y = ids.map((k) => VY[k]), dk = D((X[0] + X[2]) / 2, (Y[0] + Y[2]) / 2), par = (i + j) % 2;
+      if (par === 0 ? dk > 0.1 : dk > 0.45) scanFill(X, Y, (par ? 135 : 45) * D2R, toneStep(dk) * (par ? 1.6 : 1), par, out, q % 2);
+    }
+    return out;
+  }
+
+  // opposing gradients: vertical bars cut into triangular zones; in each zone the bars run in
+  // from its base for as far as the tone allows, so neighbouring zones ramp in opposite directions
+  function genOpposing(d) {
+    const pitch = S.spacing * 0.6, P = S.spacing * 7, H = P * 0.9, amp = S.amp / 100, f = focus(d), out = [], step = Math.max(0.25, pitch * 0.3);
+    const cols = Math.max(1, Math.floor(d.dw / pitch));
+    for (let q = 0; q < cols; q++) {
+      const x = d.mx + (q + 0.5) * d.dw / cols, segs = [];
+      let cur = [], zone = null;
+      for (let y = d.my; y <= d.my + d.dh + 1e-6; y += step) {
+        const rv = (y - d.my) / H, r = Math.floor(rv), vu = 1 - (rv - r), u = (x - d.mx) / P + (r % 2) * 0.5, k = Math.floor(u), fu = u - k;
+        // up triangles fill from their left side, down triangles from their right, fanning out from the apex
+        const up = Math.abs(fu - 0.5) <= 0.5 * (1 - vu), z = r * 4096 + (up ? 2 * k : fu < 0.5 ? 2 * k - 1 : 2 * k + 1);
+        const t = up ? (fu - 0.5 * vu) / Math.max(1e-3, 1 - vu) : 1 - (((fu + 0.5) % 1) - 0.5 + 0.5 * vu) / Math.max(1e-3, vu);
+        const keep = focusDk(f, x, y, 0.6) * amp * 1.1 > t * 0.92 + 0.04;
+        if (!keep || z !== zone) { if (cur.length >= 4) segs.push(cur); cur = []; }
+        zone = z;
+        if (keep) cur.push(x, y);
+      }
+      if (cur.length >= 4) segs.push(cur);
+      if (q % 2) segs.reverse();
+      segs.forEach((p) => out.push({ layer: 0, pts: q % 2 ? rev(p) : p }));
+    }
+    return out;
+  }
+
+  // dissolving squares: a square grid that shrinks, scatters and twists apart as the picture gets lighter
+  function genSquares(d) {
+    const c = S.spacing * 2.2, amp = S.amp / 100, f = focus(d), out = [];
+    cellGrid(d, c, (x, y, i, j) => {
+      const dk = focusDk(f, x, y, 0.7), side = Math.min(c * 0.92, c * 0.9 * Math.sqrt(dk) * amp);
+      if (side < S.pen * 4) return;
+      const loose = 1 - dk, rot = (hash(i, j) - 0.5) * loose * 0.9;
+      const cx = x + (hash(j + 11, i) - 0.5) * loose * c * 0.3, cy = y + (hash(i + 5, j + 3) - 0.5) * loose * c * 0.3;
+      const X = [], Y = [];
+      for (let k = 0; k < 4; k++) { const a = rot + Math.PI / 4 + k * Math.PI / 2; X.push(cx + Math.cos(a) * side * Math.SQRT1_2); Y.push(cy + Math.sin(a) * side * Math.SQRT1_2); }
+      if (!allIn(d, X, Y)) return;
+      out.push({ layer: 0, pts: ring(X, Y) });
+      if (dk > 0.2) scanFill(X, Y, rot + Math.PI / 4, toneStep(dk), 1, out, j % 2);
+    });
+    return out;
+  }
+
   // ---------------- growth: reaction-diffusion seeded and steered by the image ----------------
   function genGrowth(d) {
     const cell = Math.max(0.6, S.spacing * 0.5);
@@ -2915,7 +3077,7 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
     return out;
   }
 
-  const GEN = { voronoi: genVoronoi, subdiv: genSubdiv, ridges: genRidges, technical: genTechnical, duotone: genDuotone, wave: genWave, hatch: genHatch, spiral: genSpiral, dots: genDots, contour: genContour, flow: genFlow, engrave: genEngrave, etch: genEtch, loop: genLoop, snow: genSnow, blobs: genBlobs, hairs: genHairs, arrows: genArrows, suns: genSuns, swirls: genSwirls, ascii: genAscii, growth: genGrowth, truchet: genTruchet };
+  const GEN = { voronoi: genVoronoi, subdiv: genSubdiv, ridges: genRidges, technical: genTechnical, duotone: genDuotone, wave: genWave, hatch: genHatch, spiral: genSpiral, dots: genDots, contour: genContour, flow: genFlow, engrave: genEngrave, etch: genEtch, loop: genLoop, snow: genSnow, blobs: genBlobs, hairs: genHairs, arrows: genArrows, suns: genSuns, swirls: genSwirls, ascii: genAscii, growth: genGrowth, truchet: genTruchet, veil: genVeil, wavenet: genWaveNet, tris: genTris, checker: genChecker, opposing: genOpposing, squares: genSquares };
 
   // ---------------- viewport: fit, zoom, pan ----------------
   const stage = $("stage"), paperEl = $("paper"), view = $("view"), vctx = view.getContext("2d");

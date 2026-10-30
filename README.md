@@ -96,6 +96,12 @@ Long-press the picture to drop a point that the current style reacts to. A targe
 | Voronoi | Cells shrink towards the point (attract) or grow (repel) | same |
 | Subdiv  | Mesh is pulled towards the point | same |
 | Truchet | Tiles get smaller around the point | Tiles get bigger around the point |
+| Veil    | Lines bunch up around the point | Lines part around the point |
+| Wave net | Lines split apart around the point | Lines merge around the point |
+| Triangles | Triangles grow around the point | Triangles shrink |
+| Checker | The board pinches in towards the point | Bulges away |
+| Opposing | Bars lengthen around the point | Bars shorten |
+| Squares | Squares grow around the point | A clearing opens at the point |
 | Ridges  | Raises (attract) or sinks (repel) a bump at the point | same |
 
 ## Top bar
@@ -132,6 +138,12 @@ Long-press the picture to drop a point that the current style reacts to. A targe
 | Voronoi | Cells packed small in the dark areas and large in the light; Cell gap shrinks each cell into its own outline, with extra rings in the darkest |
 | Subdiv  | A quad mesh pulled towards the dark areas and smoothed with Catmull-Clark subdivision (rows on pen 1, columns on pen 2) |
 | Truchet | Quarter-circle Truchet tiles on a quadtree: tiles shrink along the subject's edges so their sizes trace its shape, each tile turns its arcs to run along the local edge, and darker areas get smaller tiles. Parallel lines sets how many lines (1–6) each arc carries; Shape detail sets how readily tiles split |
+| Veil    | Full-height vertical lines that bunch together in the dark, like a sheer curtain. Bunching sets how strongly |
+| Wave net | Wavy rows that merge in pairs in the light and split apart in the dark; which neighbours pair up drifts across the sheet, so the merges weave into a net |
+| Triangles | A triangle grid; each triangle is sized by tone and hatched along one edge, tighter where it is darker (outlines on pen 1, hatching on pen 2) |
+| Checker | A checkerboard whose corners are pushed along the picture's edges. The two colours are hatched in opposite directions on pens 1 and 2, denser in the dark; the light squares only appear in darker areas |
+| Opposing | Vertical bars cut into triangular zones. Each zone fills from one side as far as the tone allows, and neighbouring zones fill from opposite sides |
+| Squares | A square grid that shrinks, scatters and twists apart as the picture gets lighter; the squares are hatched, tighter in the dark (outlines on pen 1, hatching on pen 2) |
 | Ridges  | Rows lifted by the image as a height field, with hidden lines removed, like a joy-division plot |
 
 Contour, Flow, Hairs, Arrows, Suns, Swirls, ASCII and Growth are ported from
