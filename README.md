@@ -6,7 +6,7 @@
 
 Point your phone camera at something and turn it into pen-plotter line art in real time, then save an SVG ready for the [terraPen](https://terrapen.xyz) (or any plotter).
 
-**Live page:** https://warderoid-ctrl.github.io/terrapen-camera-plot/
+**Live page:** https://warderoid-ctrl.github.io/plotterLens/
 
 ## Use it
 
