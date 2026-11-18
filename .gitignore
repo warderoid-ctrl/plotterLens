@@ -6,3 +6,4 @@ desktop.ini
 .vscode/
 !icons/*.svg
 !promo/plotterlens-qr-github.svg
+!promo/plotterlens-qr.svg

@@ -234,7 +234,7 @@
     await pointAt($("btnSave")); ripple(); await wait(2600);
 
     capOff();
-    await showCard("Free in your browser", "terrapen.xyz", "terraLens", 4200);
+    await showCard("Free in your browser", "plotterlens.terrapen.xyz", "terraLens", 4200);
     await wait(500);
   }
 
