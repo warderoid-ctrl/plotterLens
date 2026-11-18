@@ -1,6 +1,6 @@
 {
-  "name": "terraLens",
-  "short_name": "terraLens",
+  "name": "plotterLens",
+  "short_name": "plotterLens",
   "description": "Point your phone camera at something and turn it into pen-plotter line art, saved as SVG. By terraPen.",
   "id": "./",
   "start_url": "./",

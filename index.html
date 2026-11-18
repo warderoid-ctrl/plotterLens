@@ -7,9 +7,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="terraLens">
-<title>terraLens</title>
-<meta name="description" content="terraLens: point your phone camera at something and turn it into pen-plotter line art, saved as SVG.">
+<meta name="apple-mobile-web-app-title" content="plotterLens">
+<title>plotterLens</title>
+<meta name="description" content="plotterLens: point your phone camera at something and turn it into pen-plotter line art, saved as SVG.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
@@ -382,7 +382,7 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
     <button class="btn small" id="galSelect" type="button">Select</button>
   </header>
   <div class="galscroll">
-    <p class="tips galtip" id="galIos" hidden>Safari can clear this gallery if terraLens isn't opened for a week or so. Add it to your Home Screen (Share → Add to Home Screen) to keep it safe, and download anything you want to keep.</p>
+    <p class="tips galtip" id="galIos" hidden>Safari can clear this gallery if plotterLens isn't opened for a week or so. Add it to your Home Screen (Share → Add to Home Screen) to keep it safe, and download anything you want to keep.</p>
     <div class="galgrid" id="galGrid"></div>
     <div class="galempty" id="galEmpty" hidden>
       <svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
@@ -638,7 +638,7 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
     <div class="sec" id="appSec" hidden>
       <p class="label">Get the app</p>
       <button class="btn primary-btn" id="btnInstall" type="button" hidden>
-        <svg class="i" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 8v7M9 12l3 3 3-3"/></svg>Install terraLens
+        <svg class="i" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 8v7M9 12l3 3 3-3"/></svg>Install plotterLens
       </button>
       <p class="tips" id="iosTip" hidden>On iPhone or iPad: tap the <b>Share</b> button in Safari, then <b>Add to Home Screen</b>. It opens full screen, works offline, and remembers your camera permission.</p>
       <p class="tips" id="androidTip" hidden>It installs like a normal app, opens full screen and works offline.</p>
@@ -3750,7 +3750,7 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
     return s + "</svg>\n";
   }
   const stamp = () => { const t = new Date(), p = (n) => String(n).padStart(2, "0"); return `${t.getFullYear()}${p(t.getMonth() + 1)}${p(t.getDate())}-${p(t.getHours())}${p(t.getMinutes())}${p(t.getSeconds())}`; };
-  const fname = () => `terralens-${S.size}${S.shape === "p" ? "" : "-" + SHAPES[S.shape]}-${S.mode}-${stamp()}.svg`;
+  const fname = () => `plotterlens-${S.size}${S.shape === "p" ? "" : "-" + SHAPES[S.shape]}-${S.mode}-${stamp()}.svg`;
   function prepExport() {
     if (live && !frozen) freeze();
     if (dirtyGen) { dirtyGen = false; render(); }
@@ -3792,7 +3792,7 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
   })();
   async function shareFiles(files) {
     if (!files.length) return;
-    try { await navigator.share({ files: files.map((fl) => new File([fl.svg], fl.name, { type: "image/svg+xml" })), title: "terraLens plot" }); }
+    try { await navigator.share({ files: files.map((fl) => new File([fl.svg], fl.name, { type: "image/svg+xml" })), title: "plotterLens plot" }); }
     catch (e) { if (e && e.name !== "AbortError") toast("Sharing failed. Use Download instead."); }
   }
   if (canShareFiles) {
@@ -4163,7 +4163,7 @@ body.galopen .toast { z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-b
       try { await deferredPrompt.userChoice; } catch (e) {}
       deferredPrompt = null; $("btnInstall").hidden = true;
     });
-    addEventListener("appinstalled", () => { $("appSec").hidden = true; toast("Installed. Open terraLens from your home screen."); });
+    addEventListener("appinstalled", () => { $("appSec").hidden = true; toast("Installed. Open plotterLens from your home screen."); });
   }
 
   // ?demo: expose a few handles and load the scripted tour (demo.js) that drives the real controls.

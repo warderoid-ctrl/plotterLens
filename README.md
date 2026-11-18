@@ -1,4 +1,4 @@
-<p align="center"><img src="icons/logo.svg" width="160" alt="terraLens logo: a lens filled with wave lines"></p>
+<p align="center"><img src="icons/logo.svg" width="160" alt="plotterLens logo: a lens filled with wave lines"></p>
 
 # plotterLens
 
@@ -24,7 +24,7 @@ Saved plots stay on your device, in the app's own storage, so nothing is downloa
 - **Edit** reopens the photo with the same settings, so you can change the style or the sliders. Saving again adds a new plot and leaves the original as it was.
 - **Long-press** (or tap **Select**) to pick several plots, then download, send or delete them together.
 
-The gallery lives on this one device and browser. Clearing site data removes it. On iPhone, Safari may clear it if the site isn't opened for a while, unless terraLens is added to the Home Screen. Download anything you want to keep.
+The gallery lives on this one device and browser. Clearing site data removes it. On iPhone, Safari may clear it if the site isn't opened for a while, unless plotterLens is added to the Home Screen. Download anything you want to keep.
 
 No camera permission? The camera button beside the shutter opens your camera app instead, and the picture button loads an image from your gallery.
 
@@ -32,7 +32,7 @@ No camera permission? The camera button beside the shutter opens your camera app
 
 It's a Progressive Web App, so it installs from the browser with no app store:
 
-- **Android (Chrome):** open the page, then tap **Install** when prompted, or open the settings sheet and tap **Install terraLens**.
+- **Android (Chrome):** open the page, then tap **Install** when prompted, or open the settings sheet and tap **Install plotterLens**.
 - **iPhone / iPad (Safari):** tap **Share**, then **Add to Home Screen**.
 - **Desktop (Chrome / Edge):** click the install icon in the address bar.
 
@@ -51,7 +51,7 @@ Once installed it opens full screen, has its own icon, works offline and keeps y
 
 **Show the camera under the lines** (Settings) fades the camera picture in behind the plot so you can line up the shot, with a **Camera opacity** slider (20% to start). It only shows on screen and is never saved in the SVG.
 
-On a phone, the first tap takes the app full screen (turn off **Go full screen on first tap** in Settings to stop this). The installed Android app opens full screen straight away. iPhone Safari doesn't allow web pages to go full screen, but adding terraLens to the Home Screen gives a similar edge-to-edge view.
+On a phone, the first tap takes the app full screen (turn off **Go full screen on first tap** in Settings to stop this). The installed Android app opens full screen straight away. iPhone Safari doesn't allow web pages to go full screen, but adding plotterLens to the Home Screen gives a similar edge-to-edge view.
 
 Swipe up on the bottom bar, tap its handle, or tap the style that's already picked in the carousel for every setting. When the controls are hidden, the handle stays above the carousel; tap it to bring them back. On a phone the open menu takes the lower part of the screen and the paper sits above it, so you can see every change as you make it. While you drag a slider, the rest of the menu fades away, the slider drops to the bottom and the paper grows to fill the screen above it.
 

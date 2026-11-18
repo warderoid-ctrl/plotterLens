@@ -1,4 +1,4 @@
-/* terraLens demo tour. Loaded by index.html when the address has ?demo.
+/* plotterLens demo tour. Loaded by index.html when the address has ?demo.
    It drives the real controls (taps, drags, sliders) with a pointer marker and captions,
    using video clips as the camera. Two ways to run it:
    - by hand: open /?demo, choose one or more short video clips, press Play tour
@@ -133,7 +133,7 @@
   async function tour() {
     $("hint").hidden = true;
     document.querySelector(".top").style.opacity = "";
-    if (!q.has("notitle")) await showCard("terraLens", "Turn the camera into plotter-ready line art", "by terraPen", 3200);
+    if (!q.has("notitle")) await showCard("plotterLens", "Turn the camera into plotter-ready line art", "by terraPen", 3200);
     await useClip(0, 1500);
 
     cap("Point the camera at anything. Here a short clip stands in for the live camera", "Live camera");
@@ -234,7 +234,7 @@
     await pointAt($("btnSave")); ripple(); await wait(2600);
 
     capOff();
-    await showCard("Free in your browser", "plotterlens.terrapen.xyz", "terraLens", 4200);
+    await showCard("Free in your browser", "plotterlens.terrapen.xyz", "plotterLens", 4200);
     await wait(500);
   }
 
